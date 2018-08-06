@@ -42,7 +42,7 @@ module DetailPage =
             content=View.ScrollView(
                 content=View.StackLayout(
                     children=[
-                        View.ImageEx(source=match model.Contact.Picture with null -> box "addphoto.png" | picture -> box picture)
+                        View.ImageEx(source=(match model.Contact.Picture with null -> box "addphoto.png" | picture -> box picture), heightRequest=155., widthRequest=75., aspect=Aspect.AspectFill)
                         View.StackLayout(
                             orientation=StackOrientation.Horizontal,
                             children=[

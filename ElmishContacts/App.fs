@@ -143,6 +143,16 @@ module App =
                 | _, None, Some edit -> [ mainPage; edit ]
         )
 
+#if LIVEUPDATE
+module AppLiveUpdate =
+    let dbPath = "/Users/timothelariviere/Library/Developer/CoreSimulator/Devices/E1CFA6C3-CD8A-459C-A783-F52C87D2CE98/data/Containers/Data/Application/CB838348-9D61-4E37-B840-9F2BFE155D15/Documents/../Library/Databases/Contacts.db3"
+
+    let mockInit = App.init dbPath
+    let mockUpdate = App.update dbPath
+    let mockView = App.view
+    let programLiveUpdate = Program.mkProgram mockInit mockUpdate mockView
+#endif
+
 type App (dbPath) as app = 
     inherit Application ()
 
@@ -154,7 +164,9 @@ type App (dbPath) as app =
         Program.mkProgram init update view
         |> Program.runWithDynamicView app
 
-
+#if LIVEUPDATE
+    do runner.EnableLiveUpdate ()
+#endif
 
 #if APPSAVE
     let modelId = "model"

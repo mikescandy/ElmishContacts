@@ -241,5 +241,8 @@
       <Project>{AD454E78-7578-4EB2-99EA-1F3F6F21A950}</Project>
       <Name>ElmishContacts</Name>
     </ProjectReference>
+    <Reference Include="Elmish.XamarinForms.LiveUpdate">
+      <HintPath>..\packages\Elmish.XamarinForms.LiveUpdate.0.16.0\lib\netstandard2.0\Elmish.XamarinForms.LiveUpdate.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>

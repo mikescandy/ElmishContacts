@@ -4,7 +4,7 @@
     <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DefineConstants>TRACE;DEBUG;NETSTANDARD;NETSTANDARD2_0;</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD;NETSTANDARD2_0;LIVEUPDATE</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Controls\BorderedEntry.fs" />
@@ -31,6 +31,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.1" />
     <PackageReference Include="Plugin.Permissions" Version="3.0.0.12" />
+    <PackageReference Include="Elmish.XamarinForms.LiveUpdate" Version="0.16.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controls\" />
