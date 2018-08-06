@@ -66,7 +66,7 @@
   <Import Project="$(SolutionDir)/packages/Xamarin.Android.Support.v7.AppCompat.27.0.2.1/build/MonoAndroid81/Xamarin.Android.Support.v7.AppCompat.targets" Condition="Exists('$(SolutionDir)/packages/Xamarin.Android.Support.v7.AppCompat.27.0.2.1/build/MonoAndroid81/Xamarin.Android.Support.v7.AppCompat.targets')" />
   <Import Project="$(SolutionDir)/packages/Xamarin.Android.Support.Design.27.0.2.1/build/MonoAndroid81/Xamarin.Android.Support.Design.targets" Condition="Exists('$(SolutionDir)/packages/Xamarin.Android.Support.Design.27.0.2.1/build/MonoAndroid81/Xamarin.Android.Support.Design.targets')" />
   <Import Project="$(SolutionDir)/packages/Xamarin.Android.Support.v7.MediaRouter.27.0.2.1/build/MonoAndroid81/Xamarin.Android.Support.v7.MediaRouter.targets" Condition="Exists('$(SolutionDir)/packages/Xamarin.Android.Support.v7.MediaRouter.27.0.2.1/build/MonoAndroid81/Xamarin.Android.Support.v7.MediaRouter.targets')" />
-<!--  <Import Project="$(SolutionDir)/packages/Xamarin.Forms.3.0.0.482510/build/netstandard1.0/Xamarin.Forms.targets" Condition="Exists('$(SolutionDir)/packages/Xamarin.Forms.3.0.0.482510/build/netstandard1.0/Xamarin.Forms.targets')" />-->
+  <!--  <Import Project="$(SolutionDir)/packages/Xamarin.Forms.3.0.0.482510/build/netstandard1.0/Xamarin.Forms.targets" Condition="Exists('$(SolutionDir)/packages/Xamarin.Forms.3.0.0.482510/build/netstandard1.0/Xamarin.Forms.targets')" />-->
   <Import Project="../.nuget/NuGet.targets" />
   <Import Project="..\packages\Xamarin.Build.Download.0.4.2\build\Xamarin.Build.Download.targets" Condition="Exists('..\packages\Xamarin.Build.Download.0.4.2\build\Xamarin.Build.Download.targets')" />
   <Import Project="..\packages\Xamarin.GooglePlayServices.Basement.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Basement.targets" Condition="Exists('..\packages\Xamarin.GooglePlayServices.Basement.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Basement.targets')" />
@@ -74,7 +74,45 @@
   <Import Project="..\packages\Xamarin.GooglePlayServices.Base.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Base.targets" Condition="Exists('..\packages\Xamarin.GooglePlayServices.Base.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Base.targets')" />
   <Import Project="..\packages\Xamarin.GooglePlayServices.Maps.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Maps.targets" Condition="Exists('..\packages\Xamarin.GooglePlayServices.Maps.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Maps.targets')" />
   <Import Project="..\packages\Xamarin.Forms.3.1.0.637273\build\netstandard2.0\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.3.1.0.637273\build\netstandard2.0\Xamarin.Forms.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Xamarin.Build.Download.0.4.2\build\Xamarin.Build.Download.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Build.Download.0.4.2\build\Xamarin.Build.Download.props'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.Build.Download.0.4.2\build\Xamarin.Build.Download.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Build.Download.0.4.2\build\Xamarin.Build.Download.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.GooglePlayServices.Basement.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Basement.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.GooglePlayServices.Basement.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Basement.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.GooglePlayServices.Tasks.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Tasks.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.GooglePlayServices.Tasks.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Tasks.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.GooglePlayServices.Base.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Base.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.GooglePlayServices.Base.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Base.targets'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.GooglePlayServices.Maps.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Maps.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.GooglePlayServices.Maps.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Maps.targets'))" />
+  </Target>
   <ItemGroup>
+    <None Include="Properties\AndroidManifest.xml" />
+    <Compile Include="Properties\AssemblyInfo.fs" />
+    <None Include="Assets\AboutAssets.txt" />
+    <AndroidResource Include="Resources\drawable\addphoto.png" />
+    <AndroidResource Include="Resources\drawable\Icon.png" />
+    <AndroidResource Include="Resources\drawable\launcher_foreground.png" />
+    <AndroidResource Include="Resources\drawable\star.png" />
+    <AndroidResource Include="Resources\layout\Tabbar.axml" />
+    <AndroidResource Include="Resources\layout\Toolbar.axml" />
+    <AndroidResource Include="Resources\mipmap-anydpi-v26\icon.xml" />
+    <AndroidResource Include="Resources\mipmap-anydpi-v26\icon_round.xml" />
+    <AndroidResource Include="Resources\values\colors.xml" />
+    <AndroidResource Include="Resources\values\keys.xml" />
+    <AndroidResource Include="Resources\values\styles.xml" />
+    <AndroidResource Include="Resources\xml\file_paths.xml" />
+    <None Include="Resources\AboutResources.txt" />
+    <Compile Include="BorderedEntryRenderer.fs" />
+    <Compile Include="MainActivity.fs" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Elmish.XamarinForms">
+      <HintPath>..\packages\Elmish.XamarinForms.0.16.0\lib\netstandard2.0\Elmish.XamarinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmish.XamarinForms.Maps">
+      <HintPath>..\packages\Elmish.XamarinForms.Maps.0.16.0\lib\netstandard2.0\Elmish.XamarinForms.Maps.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Mono.Android" />
     <Reference Include="System" />
@@ -182,12 +220,6 @@
     <Reference Include="Xamarin.GooglePlayServices.Tasks">
       <HintPath>..\packages\Xamarin.GooglePlayServices.Tasks.42.1021.1\lib\MonoAndroid70\Xamarin.GooglePlayServices.Tasks.dll</HintPath>
     </Reference>
-    <Reference Include="Elmish.XamarinForms.Maps">
-      <HintPath>..\Libs\Elmish.XamarinForms.Maps.dll</HintPath>
-    </Reference>
-    <Reference Include="Elmish.XamarinForms">
-      <HintPath>..\Libs\Elmish.XamarinForms.dll</HintPath>
-    </Reference>
     <Reference Include="FSharp.Core">
       <HintPath>..\packages\FSharp.Core.4.5.2\lib\netstandard1.6\FSharp.Core.dll</HintPath>
     </Reference>
@@ -225,41 +257,9 @@
     <Reference Include="Plugin.Media">
       <HintPath>..\packages\Xam.Plugin.Media.4.0.1.1\lib\monoandroid71\Plugin.Media.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\AndroidManifest.xml" />
-    <Compile Include="Properties\AssemblyInfo.fs" />
-    <None Include="Assets\AboutAssets.txt" />
-    <AndroidResource Include="Resources\drawable\addphoto.png" />
-    <AndroidResource Include="Resources\drawable\Icon.png" />
-    <AndroidResource Include="Resources\drawable\launcher_foreground.png" />
-    <AndroidResource Include="Resources\drawable\star.png" />
-    <AndroidResource Include="Resources\layout\Tabbar.axml" />
-    <AndroidResource Include="Resources\layout\Toolbar.axml" />
-    <AndroidResource Include="Resources\mipmap-anydpi-v26\icon.xml" />
-    <AndroidResource Include="Resources\mipmap-anydpi-v26\icon_round.xml" />
-    <AndroidResource Include="Resources\values\colors.xml" />
-    <AndroidResource Include="Resources\values\keys.xml" />
-    <AndroidResource Include="Resources\values\styles.xml" />
-    <AndroidResource Include="Resources\xml\file_paths.xml" />
-    <None Include="Resources\AboutResources.txt" />
-    <Compile Include="BorderedEntryRenderer.fs" />
-    <Compile Include="MainActivity.fs" />
-    <None Include="packages.config" />
     <ProjectReference Include="..\ElmishContacts\ElmishContacts.fsproj">
       <Project>{AD454E78-7578-4EB2-99EA-1F3F6F21A950}</Project>
       <Name>ElmishContacts</Name>
     </ProjectReference>
   </ItemGroup>
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Xamarin.Build.Download.0.4.2\build\Xamarin.Build.Download.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Build.Download.0.4.2\build\Xamarin.Build.Download.props'))" />
-    <Error Condition="!Exists('..\packages\Xamarin.Build.Download.0.4.2\build\Xamarin.Build.Download.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Build.Download.0.4.2\build\Xamarin.Build.Download.targets'))" />
-    <Error Condition="!Exists('..\packages\Xamarin.GooglePlayServices.Basement.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Basement.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.GooglePlayServices.Basement.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Basement.targets'))" />
-    <Error Condition="!Exists('..\packages\Xamarin.GooglePlayServices.Tasks.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Tasks.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.GooglePlayServices.Tasks.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Tasks.targets'))" />
-    <Error Condition="!Exists('..\packages\Xamarin.GooglePlayServices.Base.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Base.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.GooglePlayServices.Base.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Base.targets'))" />
-    <Error Condition="!Exists('..\packages\Xamarin.GooglePlayServices.Maps.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Maps.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.GooglePlayServices.Maps.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Maps.targets'))" />
-  </Target>
 </Project>
